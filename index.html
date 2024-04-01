@@ -19,7 +19,33 @@
   <input id="endereco" type="text">
 
   <br>
-  <button type="button">Enviar</button>
+  <button type="button" onclick="enviarDados()">Enviar</button>
 
+  <script>
+    function enviarDados() {
+      // Captura os valores dos campos de entrada
+      var nome = document.getElementById("nome").value;
+      var idade = document.getElementById("idade").value;
+      var nascimento = document.getElementById("nascimento").value;
+      var endereco = document.getElementById("endereco").value;
+
+      // Monta o objeto com os dados
+      var dados = {
+        nome: nome,
+        idade: idade,
+        nascimento: nascimento,
+        endereco: endereco
+      };
+
+      // Converte o objeto em JSON
+      var dadosJSON = JSON.stringify(dados);
+
+      // Faz a solicitação POST
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://eo17ntwnezhvaf.m.pipedream.net", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(dadosJSON);
+    }
+  </script>
 </body>
 </html>
