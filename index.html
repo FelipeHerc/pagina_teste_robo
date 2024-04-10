@@ -50,6 +50,23 @@
     button:hover {
       background-color: #0056b3;
     }
+
+    .status {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .loading {
+      color: #007bff;
+    }
+
+    .success {
+      color: #28a745;
+    }
+
+    .error {
+      color: #dc3545;
+    }
   </style>
 </head>
 <body>
@@ -69,6 +86,7 @@
 
     <br>
     <button type="button" onclick="enviarDados()">Enviar</button>
+    <div class="status" id="status"></div>
   </div>
 
   <script>
@@ -88,8 +106,21 @@
       var dadosJSON = JSON.stringify(dados);
 
       var xhr = new XMLHttpRequest();
+      var statusElement = document.getElementById("status");
+      statusElement.textContent = "Enviando...";
       xhr.open("POST", "https://eo17ntwnezhvaf.m.pipedream.net", true);
       xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            statusElement.textContent = "Requisição enviada com sucesso!";
+            statusElement.className = "status success";
+          } else {
+            statusElement.textContent = "Ocorreu um erro ao enviar a requisição.";
+            statusElement.className = "status error";
+          }
+        }
+      };
       xhr.send(dadosJSON);
     }
   </script>
