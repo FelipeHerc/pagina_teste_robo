@@ -1,1 +1,15 @@
-function enviarDados(){var e,t=document.getElementById("nome").value,n=document.getElementById("idade").value,a={nome:t,idade:n,nascimento:document.getElementById("nascimento").value,endereco:document.getElementById("endereco").value},s=CryptoJS.SHA256(a.nascimento).toString(CryptoJS.enc.Hex);a.token=s;var o=JSON.stringify(a),i=new XMLHttpRequest,r=document.getElementById("status");r.textContent="Enviando...",i.open("POST","https://eo17ntwnezhvaf.m.pipedream.net",!0),i.setRequestHeader("Content-Type","application/json"),i.onreadystatechange=function(){i.readyState===XMLHttpRequest.DONE&&(200===i.status?(r.textContent="Requisi\xe7\xe3o enviada com sucesso!",r.className="status success"):(r.textContent="Ocorreu um erro ao enviar a requisi\xe7\xe3o.",r.className="status error"))},i.send(o)}
+function enviarDados() {
+    var e, t = document.getElementById("nome").value,
+        n = document.getElementById("idade").value,
+        a = {
+            nome: t,
+            idade: n,
+            nascimento: document.getElementById("nascimento").value,
+            endereco: document.getElementById("endereco").value
+            horario_clicado: new Date().toISOString()
+        },
+        s = CryptoJS.SHA256(a.horario_clicado).toString(CryptoJS.enc.Hex);
+    a.token = s;
+    console.log(s)
+
+}
