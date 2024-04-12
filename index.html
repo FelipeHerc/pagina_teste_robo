@@ -89,6 +89,7 @@
     <div class="status" id="status"></div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
   <script>
     function enviarDados() {
       var nome = document.getElementById("nome").value;
@@ -104,6 +105,12 @@
       };
 
       var dadosJSON = JSON.stringify(dados);
+
+      var token = CryptoJS.SHA256(dadosJSON).toString(CryptoJS.enc.Hex);
+
+      dados.token = token;
+
+      var dadosAtualizadosJSON = JSON.stringify(dados);
 
       var xhr = new XMLHttpRequest();
       var statusElement = document.getElementById("status");
@@ -121,8 +128,9 @@
           }
         }
       };
-      xhr.send(dadosJSON);
+      xhr.send(dadosAtualizadosJSON);
     }
   </script>
 </body>
+
 </html>
