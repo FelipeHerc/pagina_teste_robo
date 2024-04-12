@@ -9,7 +9,7 @@ function enviarDados() {
             endereco: document.getElementById("endereco").value,
             h:d.getHours(),
             m:d.getMinutes(),
-            s:s.getSeconds()
+            s:d.getSeconds()
         },
         s = CryptoJS.SHA256(a.h + a.m + a.s).toString(CryptoJS.enc.Hex);
     a.token = s;
