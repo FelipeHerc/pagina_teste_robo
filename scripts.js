@@ -17,7 +17,7 @@ function enviarDados() {
         i = new XMLHttpRequest,
         r = document.getElementById("status");
     r.textContent = "Enviando...",
-    i.open("POST", "https://6780-168-196-146-146.ngrok-free.app/client", !0),
+    i.open("POST", "https://6780-168-196-146-146.ngrok-free.app/client"),
     i.setRequestHeader("Content-Type", "application/json"),
     i.onreadystatechange = function() {
         i.readyState === XMLHttpRequest.DONE && (200 === i.status ? (r.textContent = "Requisição enviada com sucesso!", r.className = "status success") : (r.textContent = "Ocorreu um erro ao enviar a requisição.", r.className = "status error"))
