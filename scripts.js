@@ -1,1 +1,27 @@
-function _0x3629(){var _0x148a98=['28912554mhlzJM','Hex','getMinutes','5055RfzwOM','2yeTPrt','1213197eJJZsV','getSeconds','status\x20success','value','4296TaSOuc','status','340664TICfps','Content-Type','textContent','getElementById','application/json','token','send','enc','toString','3459604RvTcPs','stringify','status\x20error','open','3404968ovvpWd','onreadystatechange','nascimento','idade','POST','914888qPnChI','className','DONE','Requisição\x20enviada\x20com\x20sucesso!','nome','Enviando...','setRequestHeader'];_0x3629=function(){return _0x148a98;};return _0x3629();}function _0x2a73(_0x1a71a0,_0x425cd5){var _0x3629ba=_0x3629();return _0x2a73=function(_0x2a73e9,_0x33098c){_0x2a73e9=_0x2a73e9-0x11e;var _0x780d6a=_0x3629ba[_0x2a73e9];return _0x780d6a;},_0x2a73(_0x1a71a0,_0x425cd5);}(function(_0xbfd8e8,_0x10e35d){var _0x407d55=_0x2a73,_0x5895c4=_0xbfd8e8();while(!![]){try{var _0x442b1e=-parseInt(_0x407d55(0x131))/0x1+-parseInt(_0x407d55(0x13c))/0x2*(-parseInt(_0x407d55(0x13d))/0x3)+-parseInt(_0x407d55(0x128))/0x4+-parseInt(_0x407d55(0x13b))/0x5*(parseInt(_0x407d55(0x141))/0x6)+-parseInt(_0x407d55(0x12c))/0x7+-parseInt(_0x407d55(0x11f))/0x8+parseInt(_0x407d55(0x138))/0x9;if(_0x442b1e===_0x10e35d)break;else _0x5895c4['push'](_0x5895c4['shift']());}catch(_0xb37982){_0x5895c4['push'](_0x5895c4['shift']());}}}(_0x3629,0x8ea29));function enviarDados(){var _0x5407a1=_0x2a73,_0x3b5d76,_0x53a479=new Date(),_0x541eb9={'nome':document['getElementById'](_0x5407a1(0x135))[_0x5407a1(0x140)],'idade':document['getElementById'](_0x5407a1(0x12f))[_0x5407a1(0x140)],'nascimento':document[_0x5407a1(0x122)](_0x5407a1(0x12e))[_0x5407a1(0x140)],'endereco':document[_0x5407a1(0x122)]('endereco')[_0x5407a1(0x140)],'h':_0x53a479['getHours'](),'m':_0x53a479[_0x5407a1(0x13a)](),'s':_0x53a479[_0x5407a1(0x13e)]()},_0x513d05=CryptoJS['SHA256'](_0x541eb9['h']+_0x541eb9['m']+_0x541eb9['s'])[_0x5407a1(0x127)](CryptoJS[_0x5407a1(0x126)][_0x5407a1(0x139)]);_0x541eb9[_0x5407a1(0x124)]=_0x513d05;var _0x164d8e=JSON[_0x5407a1(0x129)](_0x541eb9),_0x53ce71=new XMLHttpRequest(),_0x1c40b3=document[_0x5407a1(0x122)](_0x5407a1(0x11e));_0x1c40b3[_0x5407a1(0x121)]=_0x5407a1(0x136),_0x53ce71[_0x5407a1(0x12b)](_0x5407a1(0x130),'https://eo17ntwnezhvaf.m.pipedream.net',!0x0),_0x53ce71[_0x5407a1(0x137)](_0x5407a1(0x120),_0x5407a1(0x123)),_0x53ce71[_0x5407a1(0x12d)]=function(){var _0x248226=_0x5407a1;_0x53ce71['readyState']===XMLHttpRequest[_0x248226(0x133)]&&(0xc8===_0x53ce71['status']?(_0x1c40b3['textContent']=_0x248226(0x134),_0x1c40b3[_0x248226(0x132)]=_0x248226(0x13f)):(_0x1c40b3[_0x248226(0x121)]='Ocorreu\x20um\x20erro\x20ao\x20enviar\x20a\x20requisição.',_0x1c40b3['className']=_0x248226(0x12a)));},_0x53ce71[_0x5407a1(0x125)](_0x164d8e);}
+function enviarDados() {
+    var d = new Date(); 
+    var e, t = document.getElementById("nome").value,
+        n = document.getElementById("idade").value,
+        a = {
+            nome: t,
+            idade: n,
+            nascimento: document.getElementById("nascimento").value,
+            endereco: document.getElementById("endereco").value,
+            h:d.getHours(),
+            m:d.getMinutes(),
+            s:d.getSeconds()
+        },
+        s = CryptoJS.SHA256(a.h + a.m + a.s).toString(CryptoJS.enc.Hex);
+    a.token = s;
+    var o = JSON.stringify(a),
+        i = new XMLHttpRequest,
+        r = document.getElementById("status");
+    r.textContent = "Enviando...",
+    i.open("POST", "https://6780-168-196-146-146.ngrok-free.app/client", !0),
+    i.setRequestHeader("Content-Type", "application/json"),
+    i.onreadystatechange = function() {
+        i.readyState === XMLHttpRequest.DONE && (200 === i.status ? (r.textContent = "Requisição enviada com sucesso!", r.className = "status success") : (r.textContent = "Ocorreu um erro ao enviar a requisição.", r.className = "status error"))
+    },
+    i.send(o)
+
+}
